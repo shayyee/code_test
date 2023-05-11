@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+}
+#map-container {
+  width: 1000px;
+  height: 600px;
+}
+
+.map-marker {
+  width: 48px;
+  height: 49px;
+  font-size: 9.03704px;
+  padding-top: 12px;
+  color: #fff;
+  text-align: center;
+
+  background-image: url(https://qnm.hunliji.com/Fljde407OIaQl08IuXUabNpobWWB);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.map-marker .camera {
+  width: 23px;
+  height: 22px;
+  top: -3px;
+  position: relative;
+  background-image: url(https://qnm.hunliji.com/Fs-gQkZssQcFBodRXPNuTO8S1L7t);
+  background-size: 100% 100%;
+  margin: 0 auto;
+}

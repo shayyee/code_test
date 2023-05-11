@@ -1,0 +1,37 @@
+<!--https://juejin.cn/post/7221793823705268284#heading-7-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript">
+    window._AMapSecurityConfig = {
+      securityJsCode: "cb2ea663a9e90773d3f1fd2cd3b15e08",
+    };
+  </script>
+  <script type="text/javascript"
+    src="https://webapi.amap.com/maps?v=1.4.15&key=468643028cdf25f27f44a1fd28998f3b&plugin=AMap.MarkerClusterer">
+    </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="map-container"></div>
+    <div style="margin-left: 20px;">
+      <div>
+        <button class="normal-render">常规模式渲染</button>
+        <button class="rid-render">rid模式渲染</button>
+      </div>
+      <input type="text" name="" id="">
+      <div class="animate-box"></div>
+    </div>
+  </div>
+  <script type="module" src="./js/DMap.js"></script>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
