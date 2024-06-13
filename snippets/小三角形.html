@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc; /* 添加整体边框样式 */
+    border-radius: 4px; /* 可选：添加整体边框圆角 */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border: 1px solid #ccc; /* 添加内部边框样式 */
+    border-top: none; /* 可选：去除顶部边框，避免重叠 */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown::after {
+    content: '';
+    position: absolute;
+    top: -10px; /* 调整三角形位置 */
+    right: 10px;
+    border: 10px solid transparent;
+    border-bottom-color: #f9f9f9; /* 与背景色相同，形成三角形 */
+    z-index: 2; /* 确保三角形在上层 */
+}
+
+.dropdown::before {
+    content: '';
+    position: absolute;
+    top: -11px; /* 与三角形位置略微调整 */
+    right: 9px;
+    border: 11px solid transparent;
+    border-bottom-color: #ccc; /* 边框颜色与整体边框一致 */
+    z-index: 1; /* 确保在三角形下层 */
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="dropdown">
+        Dropdown
+        <div class="dropdown-content">
+            Dropdown Content
+        </div>
+    </div>
+    <script>
+        var el = document.querySelector('.dropdown')
+        console.log(el)
+        el.addEventListener('click', () => {
+            console.log(111)
+        })
+        el.addEventListener('click', () => {
+            console.log(222)
+        })
+    </script>
+</body>
+
+</html>

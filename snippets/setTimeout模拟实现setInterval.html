@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用setTimeout模拟实现setInterval</title>
+</head>
+
+<body>
+    <script>
+        // 回调函数挤压导致越来越慢
+        // setInterval(() => {
+        //     for (let i = 0; i < 10000; i++) {
+        //         const div = document.createElement('div');
+        //         div.innerHTML = i;
+        //         document.body.appendChild(div);
+        //     }
+        //     console.log(new Date().toLocaleString())
+        // }, 1000)
+        // 用setTimeout模拟实现setInterval
+
+        // 不会出现回调函数挤压导致越来越慢的问题
+        // 但是回调函数的实际执行时间 1500毫秒，加上下一个定时器的1000毫秒，实际间隔时间为2500毫秒
+        // function myInterval(cb, time) {
+        //     function fn() {
+        //         cb();
+        //         setTimeout(fn, time);  // 设置下一次定时器
+        //     }
+        //     setTimeout(fn, time);  // 初始定时器
+        // }
+
+        // myInterval(() => {
+        //     const start = Date.now();
+        //     while (Date.now() - start < 1500) {
+        //         // 模拟一个长时间运行的任务
+        //     }
+        //     console.log(new Date().toLocaleString());
+        // }, 1000);
+
+        // function myInterval(cb, time) {
+        //     function fn() {
+        //         const startTime = Date.now();
+        //         cb();
+        //         const elapsedTime = Date.now() - startTime;
+        //         setTimeout(fn, Math.max(0, time - elapsedTime));
+        //     }
+        //     setTimeout(fn, time);
+        // }
+
+        // myInterval(() => {
+        //     const start = Date.now();
+        //     while (Date.now() - start < 1500) {
+        //         // 模拟一个长时间运行的任务
+        //     }
+        //     console.log(new Date().toLocaleString());
+        // }, 1000);
+
+
+    </script>
+</body>
+
+</html>
