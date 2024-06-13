@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装动画函数</title>
+</head>
+
+<body>
+    <label>价格： 2999.00</label>
+    <button class="btn">打折</button>
+    <script src="./animation.js"></script>
+    <script>
+        const label = document.querySelector('label');
+        const btn = document.querySelector('.btn');
+        btn.onclick = function () {
+            animation(1000, 2999, 299, (value) => {
+                label.textContent = `价格： ${value.toFixed(2)}`;
+            })
+        }
+    </script>
+</body>
+
+</html>
