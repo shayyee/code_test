@@ -1,43 +1,44 @@
+#! /usr/bin/env node
 /**
  * 并发执行任务
  * @param {Function[]} tasks 
  * @param {Number} parallelCount 
  * @returns {Promise}
  */
+
 function parallelTask(tasks, parallelCount = 5) {
     return new Promise((resolve) => {
-        let index = 0
-        let count = 0
-        const result = []
-        const len = tasks.length
-        const next = () => {
-            if (index >= len) {
-                return
-            }
-            const task = tasks[index]
-            task().then((res) => {
-                result[index] = res
+        let currentTaskIndex = 0;
+        let completedTaskCount = 0;
+        let totalTaskCount = tasks.length;
+        let result = [];
+        let _next = () => {
+            // task已经取完了
+            if(currentTaskIndex >= totalTaskCount) return;
+            const task = tasks[currentTaskIndex];
+            task().then(res => {
+                result.push(res);
             }).finally(() => {
-                count++
-                if (count === len) {
-                    resolve(result)
+                completedTaskCount++;
+                if(completedTaskCount == totalTaskCount) {
+                    resolve(result);
                 } else {
-                    next()
+                    _next();
                 }
             })
-            index++
+            currentTaskIndex++;
             // 当前并发数小于并发数限制时且还有任务时，继续启动任务
-            if (index < len && index < parallelCount) {
-                next()
+            if(currentTaskIndex < totalTaskCount && currentTaskIndex < parallelCount) {
+                _next();
             }
         }
-        next()
+        _next();
     })
 }
 
 function mockTasks(num) {
     return Array.from({ length: num }).map((_, i) => {
-        return () => new Promise((resolve) => {
+        return () => new Promise(resolve => {
             setTimeout(() => {
                 resolve(i)
             }, Math.random() * 1000)
