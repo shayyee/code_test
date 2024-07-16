@@ -57,7 +57,7 @@ t.addTask(async (next) => {
     console.log(1, 'end');
 });
 t.addTask(() => {
-    console.log(2);
+    console.log(2)
 });
 t.addTask(() => {
     console.log(3);
