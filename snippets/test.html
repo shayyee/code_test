@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #input {
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+        }
+        #btn {
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" type="text"/>
+    <button id="btn">测试</button>
+    <script>
+        const input = document.getElementById('input');
+        const btn = document.getElementById('btn');
+        let $context = {};
+        $context.doMethod = function(methodName, data, callback) {           
+            if(window.MTJSBridge) {
+                console.log('已注入MTJSBridge');
+            } else {
+                console.log('监听注入MTJSBridge');
+                window.addEventListener('MTJSBridgeReady', callback);
+            }
+
+        }
+
+
+        btn.addEventListener('click', () => {
+            $context.doMethod(input.value);
+        });
+    </script>
+</body>
+</html>

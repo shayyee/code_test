@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue2</title>
+    <script src="./core.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <h2>{{count}}</h2>
+        <button @click="add">+1</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                title: 'Hello Vue',
+                count: 1
+            },
+            methods: {
+                add() {
+                    this.count++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

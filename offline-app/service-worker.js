@@ -15,6 +15,22 @@ self.addEventListener('install', event => {
       })
   );
 });
+
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
 /**
  * 拦截所有的网络请求，并尝试从缓存中获取请求的资源。
  * 如果缓存中存在该资源，则直接返回缓存中的响应；
@@ -29,20 +45,5 @@ self.addEventListener('fetch', event => {
         }
         return fetch(event.request);
       })
-  );
-});
-
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
   );
 });
